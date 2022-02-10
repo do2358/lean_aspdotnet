@@ -226,3 +226,7 @@ __pycache__/
 
 # Windows thumbnail cache files
 Thumbs.db
+
+ContosoUniversity/bin/Debug/
+ContosoUniversity/obj/Debug/
+.vs/ContosoUniversity/v17/.suo
