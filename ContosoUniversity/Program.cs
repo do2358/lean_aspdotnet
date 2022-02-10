@@ -1,4 +1,16 @@
+using ContosoUniversity.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<SchoolContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+var scope = builder.Services.BuildServiceProvider().CreateScope();
+var context = scope.ServiceProvider.GetRequiredService<SchoolContext>();
+DbInitializer.Initialize(context);
+
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
